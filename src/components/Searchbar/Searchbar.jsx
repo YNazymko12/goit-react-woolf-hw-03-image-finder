@@ -14,17 +14,15 @@ export class Searchbar extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    this.state.searchQuery.trim() === ''
-      ? Report.failure(
-          'Sorry',
-          'Sorry, but I dont know what to search for. Please enter your query in the search field, and Ill see what I can find.',
-          'Ok'
-        )
-      : this.props.onSubmit(this.state.searchQuery) || this.reset();
-  };
-
-  reset = () => {
-    this.setState({ searchQuery: '' });
+    if (this.state.searchQuery.trim() === '') {
+      Report.failure(
+        'Sorry',
+        'Sorry, but I dont know what to search for. Please enter your query in the search field, and Ill see what I can find.',
+        'Ok'
+      );
+    } else {
+      this.props.onSubmit(this.state.searchQuery);
+    }
   };
 
   render() {
