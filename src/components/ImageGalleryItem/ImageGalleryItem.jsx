@@ -1,7 +1,18 @@
-export const ImageGalleryItem = ({ tags, webformatURL }) => {
+import { Item, Image } from './ImageGalleryItem.styled';
+
+export const ImageGalleryItem = ({
+  tags,
+  webformatURL,
+  largeImageURL,
+  showModal,
+}) => {
   return (
-    <li>
-      <img src={webformatURL} alt={tags} />
-    </li>
+    <Item>
+      <Image
+        src={webformatURL}
+        alt={tags}
+        onClick={() => showModal(largeImageURL)}
+      />
+    </Item>
   );
 };
