@@ -33,6 +33,7 @@ export class App extends Component {
       const data = await getImages(this.state.query, this.state.page);
 
       const newImages = data.data.hits;
+      console.log(newImages);
 
       if (newImages.length === 0) {
         return Notify.warning(
@@ -48,7 +49,6 @@ export class App extends Component {
 
       this.setState(prev => ({
         images: prev.images ? [...prev.images, ...newImages] : newImages,
-
         totalPages: totalPages,
       }));
     } catch (error) {
